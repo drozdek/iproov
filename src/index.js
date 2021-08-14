@@ -1,12 +1,11 @@
-const express = require('express');
-const PORT = 3000;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import './index.css';
 
-var app = express();
-
-app.get('/', (req, res) => {
-    res.send('Start page');
-});
-
-app.listen(PORT, () => {
-    console.log('Server started on: ' + PORT);
-});
+ReactDOM.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById('root')
+);
