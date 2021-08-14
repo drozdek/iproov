@@ -1,0 +1,10 @@
+body {
+    margin: 0 auto;
+    font: verdana 12px;    
+}
+
+/* flips camera */
+/* video {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  } */

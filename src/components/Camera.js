@@ -1,14 +1,11 @@
 import { checkPropTypes } from 'prop-types';
 import React from 'react';
+import Bttn from './Button';
 
-export default function Camera() {
+export default function Camera(props) {
 
     const openCamera = () => {
-        const dims = {
-            h: window.width,
-            h: window.height
-        }
-        var constraints = {
+        var opts = {
             audio: true,
             video: {
                 facingMode: "user",
@@ -17,14 +14,14 @@ export default function Camera() {
             }
         };
 
-        navigator.mediaDevices.getUserMedia(constraints)
-            .then(function (mediaStream) {
+        navigator.mediaDevices.getUserMedia(opts)
+            .then(mediaStream => {
                 let video = document.createElement('video');
                 video.style.width = "100%";
                 video.style.height = "100%";
                 document.body.appendChild(video);
                 video.srcObject = mediaStream;
-                video.onloadedmetadata = function (e) {
+                video.onloadedmetadata = e => {
                     video.play();
                 };
             })
@@ -34,7 +31,7 @@ export default function Camera() {
 
     return (
         <div>
-            <button onClick={openCamera}>open camera</button>
+            <Bttn onClick={openCamera}>{props.children}</Bttn>
         </div>
     )
 
