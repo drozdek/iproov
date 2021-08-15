@@ -1,23 +1,21 @@
-import { checkPropTypes } from 'prop-types';
 import '../css/index.css';
+import Face from './Face';
 import React from 'react';
 
 export default function Camera(props) {
-    const openCamera = () => {
+    const openCameraView = () => {
         var opts = {
             audio: true,
             video: {
-                facingMode: "user",
-                width: window.outerWidth,
-                height: window.outerHeight
+                facingMode: "user"
             }
         };
 
         navigator.mediaDevices.getUserMedia(opts)
             .then(mediaStream => {
                 let video = document.createElement('video');
-                video.style.width = "100%";
-                video.style.height = "100%";
+                video.style.width = "1000px";
+                video.style.height = "800px";
                 document.body.appendChild(video);
                 video.srcObject = mediaStream;
                 video.onloadedmetadata = e => {
@@ -31,7 +29,8 @@ export default function Camera(props) {
 
     return (
         <div>
-            <button onClick={openCamera}>Open camera...</button>
+            <Face />
+            <button onClick={openCameraView}>Open camera...</button>
         </div>
     )
 
