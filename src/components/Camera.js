@@ -1,9 +1,8 @@
 import { checkPropTypes } from 'prop-types';
+import '../css/index.css';
 import React from 'react';
-import Bttn from './Button';
 
 export default function Camera(props) {
-
     const openCamera = () => {
         var opts = {
             audio: true,
@@ -25,13 +24,14 @@ export default function Camera(props) {
                     video.play();
                 };
             })
-            .catch(function (err) { console.log(err.name + ": " + err.message); });
-
+            .catch(function (err) {
+                alert(`${err.message}, error code: ${err.name}`);
+            });
     }
 
     return (
         <div>
-            <Bttn onClick={openCamera}>{props.children}</Bttn>
+            <button onClick={openCamera}>Open camera...</button>
         </div>
     )
 
